@@ -59,7 +59,7 @@ module.exports = function(grunt) {
         },
         exec: {
             decache: {
-                cmd: 'php -r "' + decachephp + '"',
+               // cmd: 'php -r "' + decachephp + '"',
                 callback: function(error) {
                     if (!error) {
                         grunt.log.writeln("Moodle theme cache reset.");
@@ -101,6 +101,6 @@ module.exports = function(grunt) {
 
     // Register tasks.
     grunt.registerTask("default", ["watch"]);
-    grunt.registerTask("decache", ["exec:decache"]);
+  //  grunt.registerTask("decache", ["exec:decache"]);
     grunt.registerTask("compile", ["less", "decache"]);
 };

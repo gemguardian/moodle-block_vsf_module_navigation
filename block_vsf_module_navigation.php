@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package    block_course_modulenavigation
+ * @package    block_vsf_module_navigation
  * @copyright  2016 Digidago <contact@digidago.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -29,13 +29,13 @@ require_once($CFG->dirroot.'/course/format/lib.php');
  * Course contents block generates a table of course contents based on the
  * section descriptions
  */
-class block_course_modulenavigation extends block_base {
+class block_vsf_module_navigation extends block_base {
 
     /**
      * Initializes the block, called by the constructor
      */
     public function init() {
-        $this->title = get_string('pluginname', 'block_course_modulenavigation');
+        $this->title = get_string('pluginname', 'block_vsf_module_navigation');
     }
 
     public function has_config() {
@@ -49,7 +49,7 @@ class block_course_modulenavigation extends block_base {
         if (!empty($this->config->blocktitle)) {
             $this->title = $this->config->blocktitle;
         } else {
-            $this->title = get_string('config_blocktitle_default', 'block_course_modulenavigation');
+            $this->title = get_string('config_blocktitle_default', 'block_vsf_module_navigation');
         }
     }
 
@@ -96,12 +96,12 @@ class block_course_modulenavigation extends block_base {
             return $this->content;
         }
 
-        if (get_config('block_course_modulenavigation', 'modulepageonly') == 2) {
+        if (get_config('block_vsf_module_navigation', 'modulepageonly') == 2) {
             if ($PAGE->pagelayout == 'course') {
                 if ($this->instance->pagetypepattern != '*') {
                     $coursecontext = context_course::instance($this->page->course->id);
-                    if (has_capability('block/course_modulenavigation:addinstance', $coursecontext)) {
-                        $alerttext = get_string('alertmodulepageonly', 'block_course_modulenavigation');
+                    if (has_capability('block/vsf_module_navigation:addinstance', $coursecontext)) {
+                        $alerttext = get_string('alertmodulepageonly', 'block_vsf_module_navigation');
                         $this->content->text = html_writer::tag('div', $alerttext, array('class' => 'alert alert-warning'));
                     }
                 }
@@ -114,7 +114,7 @@ class block_course_modulenavigation extends block_base {
 
         if (!$format->uses_sections()) {
             if (debugging()) {
-                $this->content->text = get_string('notusingsections', 'block_course_modulenavigation');
+                $this->content->text = get_string('notusingsections', 'block_vsf_module_navigation');
             }
             return $this->content;
         }
@@ -196,21 +196,21 @@ class block_course_modulenavigation extends block_base {
             $template->hasprev = true;
         }
 
-        if (get_config('block_course_modulenavigation', 'onesectionsimplified') == 2) {
+        if (get_config('block_vsf_module_navigation', 'onesectionsimplified') == 2) {
             $template->hasnext = false;
             $template->hasprev = false;
         }
 
         $template->checkboxright = false;
         $template->checkboxleft = true;
-        if (get_config('block_course_modulenavigation', 'completionchecklocation') == 2) {
+        if (get_config('block_vsf_module_navigation', 'completionchecklocation') == 2) {
             $template->checkboxright = true;
             $template->checkboxleft = false;
         }
 
         $template->circlechecks = true;
         $template->checkchecks = false;
-        if (get_config('block_course_modulenavigation', 'completionchecktype') == 2) {
+        if (get_config('block_vsf_module_navigation', 'completionchecktype') == 2) {
             $template->circlechecks = false;
             $template->checkchecks = true;
         }
@@ -243,7 +243,7 @@ class block_course_modulenavigation extends block_base {
             $thissection->url = $format->get_view_url($section);
             $thissection->selected = false;
 
-            if (get_config('block_course_modulenavigation', 'toggleclickontitle') == 2) {
+            if (get_config('block_vsf_module_navigation', 'toggleclickontitle') == 2) {
                 // Display the menu.
                 $thissection->collapse = true;
             } else {
@@ -251,12 +251,12 @@ class block_course_modulenavigation extends block_base {
                 $thissection->collapse = false;
             }
 
-            if (get_config('block_course_modulenavigation', 'togglecollapse') == 2) {
+            if (get_config('block_vsf_module_navigation', 'togglecollapse') == 2) {
                 $thissection->selected = true;
             }
 
             // Show only titles
-            if (get_config('block_course_modulenavigation', 'toggletitles') == 2) {
+            if (get_config('block_vsf_module_navigation', 'toggletitles') == 2) {
                 // Show only titles
                 $thissection->onlytitles = true;
             } else {
@@ -272,7 +272,7 @@ class block_course_modulenavigation extends block_base {
             if (!empty($modinfo->sections[$i])) {
                 foreach ($modinfo->sections[$i] as $modnumber) {
                     $module = $modinfo->cms[$modnumber];
-                    if ( (get_config('block_course_modulenavigation', 'toggleshowlabels') == 1) && ($module->modname == 'label') ) {
+                    if ( (get_config('block_vsf_module_navigation', 'toggleshowlabels') == 1) && ($module->modname == 'label') ) {
                         continue;
                     }
                     if (! $module->uservisible) {
@@ -311,7 +311,7 @@ class block_course_modulenavigation extends block_base {
             if ($thissection->selected) {
 
                 $pn = $this->get_prev_next($sectionnums, $thissection->number);
-                if (get_config('block_course_modulenavigation', 'onesectionsimplified') == 2) {
+                if (get_config('block_vsf_module_navigation', 'onesectionsimplified') == 2) {
                     $params = array('id' => $course->id);
                 } else {
                     $params = array('id' => $course->id, 'section' => $i);
@@ -341,7 +341,7 @@ class block_course_modulenavigation extends block_base {
         }
         $template->coursename = $course->fullname;
         $template->config = $this->config;
-        $renderer = $this->page->get_renderer('block_course_modulenavigation', 'nav');
+        $renderer = $this->page->get_renderer('block_vsf_module_navigation', 'nav');
         $this->content->text = $renderer->render_nav($template);
         return $this->content;
     }

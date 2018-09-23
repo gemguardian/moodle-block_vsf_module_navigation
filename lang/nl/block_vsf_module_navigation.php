@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package    block_course_modulenavigation
+ * @package    block_vsf_module_navigation
  * @copyright  2016 Digidago <contact@digidago.com>
  * @author     Bas Brands
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -28,7 +28,7 @@ $string['config_blocktitle_default'] = 'Menu';
 $string['config_blocktitle_help'] = 'Laat dit veld leeg om de standaard blok titel te gebruiken. Plaats hier eventueel andere titel.';
 $string['config_onesection'] = 'Toon alleen de nu getoonde sectie';
 $string['config_onesection_label'] = 'wanneer aangevinkt zal maar één sectie getoond worden. Anders wordt een accordion menu getoond.';
-$string['course_modulenavigation:addinstance'] = 'Voeg nieuwe cursus content blok toe';
+$string['vsf_module_navigation:addinstance'] = 'Voeg nieuwe cursus content blok toe';
 $string['notusingsections'] = 'Dit cursusformat gebruikt geen secties.';
 $string['pluginname'] = 'Course Module Navigation';
 $string['toggleclickontitle'] = 'Klik op titel';

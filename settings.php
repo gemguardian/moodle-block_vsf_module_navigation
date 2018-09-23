@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package    block_course_modulenavigation
+ * @package    block_vsf_module_navigation
  * @copyright  2016 Digidago <contact@digidago.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -25,20 +25,20 @@ defined('MOODLE_INTERNAL') || die;
 if ($ADMIN->fulltree) {
 
     // Option: clicking on the downwards arrow 1) displays the menu or 2)goes to that page.
-    $name = 'block_course_modulenavigation/toggleclickontitle';
-    $title = get_string('toggleclickontitle', 'block_course_modulenavigation');
-    $description = get_string('toggleclickontitle_desc', 'block_course_modulenavigation');
+    $name = 'block_vsf_module_navigation/toggleclickontitle';
+    $title = get_string('toggleclickontitle', 'block_vsf_module_navigation');
+    $description = get_string('toggleclickontitle_desc', 'block_vsf_module_navigation');
     $default = 1;
     $choices = array(
-        1 => get_string('toggleclickontitle_menu', 'block_course_modulenavigation'),
-        2 => get_string('toggleclickontitle_page', 'block_course_modulenavigation'),
+        1 => get_string('toggleclickontitle_menu', 'block_vsf_module_navigation'),
+        2 => get_string('toggleclickontitle_page', 'block_vsf_module_navigation'),
     );
     $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
     // Option: show labels.
-    $name = 'block_course_modulenavigation/toggleshowlabels';
-    $title = get_string('toggleshowlabels', 'block_course_modulenavigation');
-    $description = get_string('toggleshowlabels_desc', 'block_course_modulenavigation');
+    $name = 'block_vsf_module_navigation/toggleshowlabels';
+    $title = get_string('toggleshowlabels', 'block_vsf_module_navigation');
+    $description = get_string('toggleshowlabels_desc', 'block_vsf_module_navigation');
     $default = 1;
     $choices = array(
         1 => new lang_string('no'), // No.
@@ -47,9 +47,9 @@ if ($ADMIN->fulltree) {
     $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
     // Option: Show all tabs open.
-    $name = 'block_course_modulenavigation/togglecollapse';
-    $title = get_string('togglecollapse', 'block_course_modulenavigation');
-    $description = get_string('togglecollapse_desc', 'block_course_modulenavigation');
+    $name = 'block_vsf_module_navigation/togglecollapse';
+    $title = get_string('togglecollapse', 'block_vsf_module_navigation');
+    $description = get_string('togglecollapse_desc', 'block_vsf_module_navigation');
     $default = 1;
     $choices = array(
         1 => new lang_string('no'), // No.
@@ -58,9 +58,9 @@ if ($ADMIN->fulltree) {
     $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
     // Option: Show only titles.
-    $name = 'block_course_modulenavigation/toggletitles';
-    $title = get_string('toggletitles', 'block_course_modulenavigation');
-    $description = get_string('toggletitles_desc', 'block_course_modulenavigation');
+    $name = 'block_vsf_module_navigation/toggletitles';
+    $title = get_string('toggletitles', 'block_vsf_module_navigation');
+    $description = get_string('toggletitles_desc', 'block_vsf_module_navigation');
     $default = 1;
     $choices = array(
         1 => new lang_string('no'), // No.
@@ -69,9 +69,9 @@ if ($ADMIN->fulltree) {
     $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
     // Option: Show on activity pages only.
-    $name = 'block_course_modulenavigation/modulepageonly';
-    $title = get_string('modulepageonly', 'block_course_modulenavigation');
-    $description = get_string('modulepageonly_desc', 'block_course_modulenavigation');
+    $name = 'block_vsf_module_navigation/modulepageonly';
+    $title = get_string('modulepageonly', 'block_vsf_module_navigation');
+    $description = get_string('modulepageonly_desc', 'block_vsf_module_navigation');
     $default = 1;
     $choices = array(
         1 => new lang_string('no'), // No.
@@ -80,9 +80,9 @@ if ($ADMIN->fulltree) {
     $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
     // Option: Show on activity pages only.
-    $name = 'block_course_modulenavigation/onesectionsimplified';
-    $title = get_string('onesectionsimplified', 'block_course_modulenavigation');
-    $description = get_string('onesectionsimplified_desc', 'block_course_modulenavigation');
+    $name = 'block_vsf_module_navigation/onesectionsimplified';
+    $title = get_string('onesectionsimplified', 'block_vsf_module_navigation');
+    $description = get_string('onesectionsimplified_desc', 'block_vsf_module_navigation');
     $default = 1;
     $choices = array(
         1 => new lang_string('no'), // No.
@@ -91,24 +91,24 @@ if ($ADMIN->fulltree) {
     $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
     // Option: Type of check icon for activity completion.
-    $name = 'block_course_modulenavigation/completionchecktype';
-    $title = get_string('completionchecktype', 'block_course_modulenavigation');
-    $description = get_string('completionchecktype_desc', 'block_course_modulenavigation');
+    $name = 'block_vsf_module_navigation/completionchecktype';
+    $title = get_string('completionchecktype', 'block_vsf_module_navigation');
+    $description = get_string('completionchecktype_desc', 'block_vsf_module_navigation');
     $default = 1;
     $choices = array(
-        1 => get_string('circle', 'block_course_modulenavigation'),
-        2 => get_string('check', 'block_course_modulenavigation')
+        1 => get_string('circle', 'block_vsf_module_navigation'),
+        2 => get_string('check', 'block_vsf_module_navigation')
     );
     $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
     // Option: Location of completion check.
-    $name = 'block_course_modulenavigation/completionchecklocation';
-    $title = get_string('completionchecklocation', 'block_course_modulenavigation');
-    $description = get_string('completionchecklocation_desc', 'block_course_modulenavigation');
+    $name = 'block_vsf_module_navigation/completionchecklocation';
+    $title = get_string('completionchecklocation', 'block_vsf_module_navigation');
+    $description = get_string('completionchecklocation_desc', 'block_vsf_module_navigation');
     $default = 1;
     $choices = array(
-        1 => get_string('left', 'block_course_modulenavigation'),
-        2 => get_string('right', 'block_course_modulenavigation')
+        1 => get_string('left', 'block_vsf_module_navigation'),
+        2 => get_string('right', 'block_vsf_module_navigation')
     );
     $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices)); 
 }

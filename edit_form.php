@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package    block_course_modulenavigation
+ * @package    block_vsf_module_navigation
  * @copyright  2016 Digidago <contact@digidago.com>
  * @author     Bas Brands
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -26,7 +26,7 @@ defined('MOODLE_INTERNAL') || die();
 /**
  * Extends the block instance coinfiguration
  */
-class block_course_modulenavigation_edit_form extends block_edit_form {
+class block_vsf_module_navigation_edit_form extends block_edit_form {
 
     /**
      * Defines fields to add to the settings form
@@ -37,14 +37,14 @@ class block_course_modulenavigation_edit_form extends block_edit_form {
 
         $mform->addElement('header', 'configheader', get_string('blocksettings', 'core_block'));
 
-        $mform->addElement('text', 'config_blocktitle', get_string('config_blocktitle', 'block_course_modulenavigation'));
+        $mform->addElement('text', 'config_blocktitle', get_string('config_blocktitle', 'block_vsf_module_navigation'));
         $mform->setDefault('config_blocktitle', '');
         $mform->setType('config_blocktitle', PARAM_MULTILANG);
 
-        $mform->addHelpButton('config_blocktitle', 'config_blocktitle', 'block_course_modulenavigation');
+        $mform->addHelpButton('config_blocktitle', 'config_blocktitle', 'block_vsf_module_navigation');
 
-        $mform->addElement('advcheckbox', 'config_onesection', get_string('config_onesection', 'block_course_modulenavigation'),
-            get_string('config_onesection_label', 'block_course_modulenavigation'));
+        $mform->addElement('advcheckbox', 'config_onesection', get_string('config_onesection', 'block_vsf_module_navigation'),
+            get_string('config_onesection_label', 'block_vsf_module_navigation'));
         $mform->setDefault('config_onesection', 1);
         $mform->setType('config_onesection', PARAM_BOOL);
     }

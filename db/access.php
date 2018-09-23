@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package    block_course_modulenavigation
+ * @package    block_vsf_module_navigation
  * @copyright  2016 Digidago <contact@digidago.com>
  * @author     Bas Brands
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -25,7 +25,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $capabilities = array(
 
-    'block/course_modulenavigation:addinstance' => array(
+    'block/vsf_module_navigation:addinstance' => array(
         'riskbitmask' => RISK_SPAM | RISK_XSS,
 
         'captype' => 'write',

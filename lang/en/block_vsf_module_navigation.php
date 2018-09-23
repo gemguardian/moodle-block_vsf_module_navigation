@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package    block_course_modulenavigation
+ * @package    block_vsf_module_navigation
  * @copyright  2016 Digidago <contact@digidago.com>
  * @author     Bas Brands
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -28,7 +28,7 @@ $string['config_blocktitle_default'] = 'Table of contents';
 $string['config_blocktitle_help'] = 'Leave this field empty to use the default block title. If you define a title here, it will be used instead of the default one.';
 $string['config_onesection'] = 'Show the current section only';
 $string['config_onesection_label'] = 'If enabled show one section only. If disabled show an accordion style menu';
-$string['course_modulenavigation:addinstance'] = 'Add a new course contents block';
+$string['vsf_module_navigation:addinstance'] = 'Add a new course contents block';
 $string['notusingsections'] = 'This course format does not use sections.';
 $string['pluginname'] = 'Course Module Navigation';
 $string['toggleclickontitle'] = 'Clicking on the title';
@@ -54,3 +54,4 @@ $string['completionchecklocation'] = 'Icon location for completion checking';
 $string['completionchecklocation_desc'] = 'Show checkes before or after the activity name';
 $string['left'] = 'Left';
 $string['right'] = 'Right';
+$string['privacy:metadata'] = 'The VSF Module Navigation plugin does not store any personal data.';

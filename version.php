@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package    block_course_modulenavigation
+ * @package    block_vsf_module_navigation
  * @copyright  2016 Digidago <contact@digidago.com><www.digidago.com>
  * @author     Bas Brands | DigiDago
  * @author     Nick Papoutsis | DigiDago
@@ -23,8 +23,8 @@
  */
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component  = 'block_course_modulenavigation';
+$plugin->component  = 'block_vsf_module_navigation';
 $plugin->release    = '3.7.0';
-$plugin->version    = 2017081302;
+$plugin->version    = 2018092301;
 $plugin->requires   = 2015102300; // Moodle 3.0 and above.
 $plugin->maturity   = MATURITY_STABLE;
