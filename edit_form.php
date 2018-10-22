@@ -32,6 +32,8 @@ class block_vsf_module_navigation_edit_form extends block_edit_form {
      * Defines fields to add to the settings form
      *
      * @param moodle_form $mform
+     *
+     * @throws coding_exception
      */
     protected function specific_definition($mform) {
 
@@ -39,13 +41,20 @@ class block_vsf_module_navigation_edit_form extends block_edit_form {
 
         $mform->addElement('text', 'config_blocktitle', get_string('config_blocktitle', 'block_vsf_module_navigation'));
         $mform->setDefault('config_blocktitle', '');
-        $mform->setType('config_blocktitle', PARAM_MULTILANG);
+        $mform->setType('config_blocktitle', PARAM_TEXT);
 
         $mform->addHelpButton('config_blocktitle', 'config_blocktitle', 'block_vsf_module_navigation');
 
-        $mform->addElement('advcheckbox', 'config_onesection', get_string('config_onesection', 'block_vsf_module_navigation'),
+        $mform->addElement('advcheckbox', 'config_onesection', get_string('config_onesection',
+            'block_vsf_module_navigation'),
             get_string('config_onesection_label', 'block_vsf_module_navigation'));
         $mform->setDefault('config_onesection', 1);
         $mform->setType('config_onesection', PARAM_BOOL);
+
+        $mform->addElement('advcheckbox', 'config_display_secionname', get_string('config_display_secionname',
+            'block_vsf_module_navigation'),
+            get_string('config_display_secionname_label', 'block_vsf_module_navigation'));
+        $mform->setDefault('config_display_secionname', 1);
+        $mform->setType('config_display_secionname', PARAM_BOOL);
     }
 }

@@ -55,3 +55,5 @@ $string['completionchecklocation_desc'] = 'Show checkes before or after the acti
 $string['left'] = 'Left';
 $string['right'] = 'Right';
 $string['privacy:metadata'] = 'The VSF Module Navigation plugin does not store any personal data.';
+$string['config_display_secionname_label'] = 'If enabled the section name will be displayed on top of the block.';
+$string['config_display_secionname'] = 'Display section name';

@@ -22,8 +22,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot.'/course/lib.php');
-require_once($CFG->dirroot.'/course/format/lib.php');
+require_once($CFG->dirroot . '/course/lib.php');
+require_once($CFG->dirroot . '/course/format/lib.php');
 
 /**
  * Course contents block generates a table of course contents based on the
@@ -42,6 +42,10 @@ class block_vsf_module_navigation extends block_base {
         return true;
     }
 
+    public function instance_allow_config() {
+        return true;
+    }
+
     /**
      * Amend the block instance after it is loaded
      */
@@ -55,10 +59,14 @@ class block_vsf_module_navigation extends block_base {
 
     /**
      * Which page types this block may appear on
+     *
      * @return array
      */
     public function applicable_formats() {
-        return array('site-index' => true, 'course-view-*' => true);
+        return [
+            'site-index' => true,
+            'course-view-*' => true,
+        ];
     }
 
     /**
@@ -68,11 +76,13 @@ class block_vsf_module_navigation extends block_base {
      */
     protected function get_navigation() {
         $this->page->navigation->initialise();
+
         return clone($this->page->navigation);
     }
 
     /**
      * Populate this block's content object
+     *
      * @return stdClass block content info
      */
     public function get_content() {
@@ -86,7 +96,7 @@ class block_vsf_module_navigation extends block_base {
 
         $this->content = new stdClass();
         $this->content->footer = '';
-        $this->content->text   = '';
+        $this->content->text = '';
 
         if (empty($this->instance)) {
             return $this->content;
@@ -102,9 +112,10 @@ class block_vsf_module_navigation extends block_base {
                     $coursecontext = context_course::instance($this->page->course->id);
                     if (has_capability('block/vsf_module_navigation:addinstance', $coursecontext)) {
                         $alerttext = get_string('alertmodulepageonly', 'block_vsf_module_navigation');
-                        $this->content->text = html_writer::tag('div', $alerttext, array('class' => 'alert alert-warning'));
+                        $this->content->text = html_writer::tag('div', $alerttext, ['class' => 'alert alert-warning']);
                     }
                 }
+
                 return $this->content;
             }
         }
@@ -116,6 +127,7 @@ class block_vsf_module_navigation extends block_base {
             if (debugging()) {
                 $this->content->text = get_string('notusingsections', 'block_vsf_module_navigation');
             }
+
             return $this->content;
         }
 
@@ -148,7 +160,7 @@ class block_vsf_module_navigation extends block_base {
             $template->completionon = 'completion';
         }
 
-        $completionok = array(COMPLETION_COMPLETE, COMPLETION_COMPLETE_PASS);
+        $completionok = [COMPLETION_COMPLETE, COMPLETION_COMPLETE_PASS];
 
         $thiscontext = context::instance_by_id($this->page->context->id);
 
@@ -161,13 +173,13 @@ class block_vsf_module_navigation extends block_base {
             if ($cm = $DB->get_record_sql("SELECT cm.*, md.name AS modname
                                            FROM {course_modules} cm
                                            JOIN {modules} md ON md.id = cm.module
-                                           WHERE cm.id = ?", array($thiscontext->instanceid))) {
+                                           WHERE cm.id = ?", [$thiscontext->instanceid])) {
                 $myactivityid = $cm->id;
             }
         }
 
         if (($format instanceof format_digidagotabs) or ($format instanceof format_horizontaltabs)) {
-            $coursesections = $DB->get_records('course_sections', array('course' => $course->id));
+            $coursesections = $DB->get_records('course_sections', ['course' => $course->id]);
             $mysection = 0;
             foreach ($coursesections as $cs) {
                 $csmodules = explode(',', $cs->sequence);
@@ -177,10 +189,14 @@ class block_vsf_module_navigation extends block_base {
             }
 
             if ($mysection) {
-                if ( $DB->get_records('format_digidagotabs_tabs', array('courseid' => $course->id,
-                 'sectionid' => $mysection)) ||
-                    $DB->get_records('format_horizontaltabs_tabs', array('courseid' => $course->id,
-                 'sectionid' => $mysection))) {
+                if ($DB->get_records('format_digidagotabs_tabs', [
+                        'courseid' => $course->id,
+                        'sectionid' => $mysection,
+                    ]) ||
+                    $DB->get_records('format_horizontaltabs_tabs', [
+                        'courseid' => $course->id,
+                        'sectionid' => $mysection,
+                    ])) {
                     // This is a module inside a tab of the Dynamic tabs course format.
                     // Prevent showing of this menu.
                     return $this->content;
@@ -215,9 +231,9 @@ class block_vsf_module_navigation extends block_base {
             $template->checkchecks = true;
         }
 
-        $courseurl = new moodle_url('/course/view.php', array('id' => $course->id));
+        $courseurl = new moodle_url('/course/view.php', ['id' => $course->id]);
         $template->courseurl = $courseurl->out();
-        $sectionnums = array();
+        $sectionnums = [];
         foreach ($sections as $section) {
             $sectionnums[] = $section->section;
         }
@@ -228,12 +244,12 @@ class block_vsf_module_navigation extends block_base {
             }
 
             if (!empty($section->name)) {
-                $title = format_string($section->name, true, array('context' => $context));
+                $title = format_string($section->name, true, ['context' => $context]);
 
             } else {
                 $summary = file_rewrite_pluginfile_urls($section->summary, 'pluginfile.php', $context->id, 'course',
                     'section', $section->id);
-                $summary = format_text($summary, $section->summaryformat, array('para' => false, 'context' => $context));
+                $summary = format_text($summary, $section->summaryformat, ['para' => false, 'context' => $context]);
                 $title = $format->get_section_name($section);
             }
 
@@ -268,14 +284,14 @@ class block_vsf_module_navigation extends block_base {
                 $thissection->selected = true;
             }
 
-            $thissection->modules = array();
+            $thissection->modules = [];
             if (!empty($modinfo->sections[$i])) {
                 foreach ($modinfo->sections[$i] as $modnumber) {
                     $module = $modinfo->cms[$modnumber];
-                    if ( (get_config('block_vsf_module_navigation', 'toggleshowlabels') == 1) && ($module->modname == 'label') ) {
+                    if ((get_config('block_vsf_module_navigation', 'toggleshowlabels') == 1) && ($module->modname == 'label')) {
                         continue;
                     }
-                    if (! $module->uservisible) {
+                    if (!$module->uservisible) {
                         continue;
                     }
                     $thismod = new stdClass();
@@ -287,7 +303,7 @@ class block_vsf_module_navigation extends block_base {
                         }
                     }
 
-                    $thismod->name = format_string($module->name, true, array('context' => $context));
+                    $thismod->name = format_string($module->name, true, ['context' => $context]);
                     $thismod->url = $module->url;
                     if ($module->modname == 'label') {
                         $thismod->url = '';
@@ -312,9 +328,9 @@ class block_vsf_module_navigation extends block_base {
 
                 $pn = $this->get_prev_next($sectionnums, $thissection->number);
                 if (get_config('block_vsf_module_navigation', 'onesectionsimplified') == 2) {
-                    $params = array('id' => $course->id);
+                    $params = ['id' => $course->id];
                 } else {
-                    $params = array('id' => $course->id, 'section' => $i);
+                    $params = ['id' => $course->id, 'section' => $i];
                 }
                 $courseurl = new moodle_url('/course/view.php', $params);
                 $template->courseurl = $courseurl->out();
@@ -326,13 +342,13 @@ class block_vsf_module_navigation extends block_base {
                     $template->hasprev = false;
                 }
 
-                $prevurl = new moodle_url('/course/view.php', array('id' => $course->id, 'section' => $pn->prev));
+                $prevurl = new moodle_url('/course/view.php', ['id' => $course->id, 'section' => $pn->prev]);
                 $template->prevurl = $prevurl->out(false);
 
-                $currurl = new moodle_url('/course/view.php', array('id' => $course->id, 'section' => $thissection->number));
+                $currurl = new moodle_url('/course/view.php', ['id' => $course->id, 'section' => $thissection->number]);
                 $template->currurl = $currurl->out(false);
 
-                $nexturl = new moodle_url('/course/view.php', array('id' => $course->id, 'section' => $pn->next));
+                $nexturl = new moodle_url('/course/view.php', ['id' => $course->id, 'section' => $pn->next]);
                 $template->nexturl = $nexturl->out(false);
             }
         }
@@ -343,13 +359,16 @@ class block_vsf_module_navigation extends block_base {
         $template->config = $this->config;
         $renderer = $this->page->get_renderer('block_vsf_module_navigation', 'nav');
         $this->content->text = $renderer->render_nav($template);
+
         return $this->content;
     }
 
     /**
      * Function to get the previous and next values in an array
+     *
      * @param array array to search
      * @param string
+     *
      * @return object $pn with prev and next values.
      */
     private function get_prev_next($array, $current) {
@@ -370,6 +389,7 @@ class block_vsf_module_navigation extends block_base {
                 }
             }
         }
+
         return $pn;
     }
 }
