@@ -57,3 +57,5 @@ $string['right'] = 'Right';
 $string['privacy:metadata'] = 'The VSF Module Navigation plugin does not store any personal data.';
 $string['config_display_secionname_label'] = 'If enabled the section name will be displayed on top of the block.';
 $string['config_display_secionname'] = 'Display section name';
+$string['config_heading'] = 'The heading name.';
+$string['config_heading_help'] = 'The heading name of the block, if empty course name will be displayed.';

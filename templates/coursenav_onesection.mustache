@@ -30,7 +30,14 @@
 }}
 <div class="section-group onesection" id="accordion" role="tablist" aria-multiselectable="false">
     <div class="backtocourse">
-        <a href="{{{courseurl}}}" class="tocourse">{{coursename}}</a>
+        <a href="{{{courseurl}}}" class="tocourse">
+            {{#config.heading}}
+                {{config.heading}}
+            {{/config.heading}}
+            {{^config.heading}}
+                {{coursename}}
+            {{/config.heading}}
+        </a>
     </div>
 
     {{#sections}}

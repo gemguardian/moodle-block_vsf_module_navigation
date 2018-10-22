@@ -56,5 +56,12 @@ class block_vsf_module_navigation_edit_form extends block_edit_form {
             get_string('config_display_secionname_label', 'block_vsf_module_navigation'));
         $mform->setDefault('config_display_secionname', 1);
         $mform->setType('config_display_secionname', PARAM_BOOL);
+
+        $mform->addElement('text', 'config_heading', get_string('config_heading',
+            'block_vsf_module_navigation'));
+        $mform->setDefault('config_heading', '');
+        $mform->setType('config_heading', PARAM_TEXT);
+
+        $mform->addHelpButton('config_heading', 'config_heading', 'block_vsf_module_navigation');
     }
 }
