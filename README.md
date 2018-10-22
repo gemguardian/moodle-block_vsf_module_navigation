@@ -76,5 +76,7 @@ Us
 @copyright 2016 Digidago http://digidago.com/
 
 @author Bas Brands (http://sonsbeekmedia.nl/)
+
 @author Nick Papoutsis(http://nils.gr/)
+
 @author Luuk Verhoeven (https://moodlefreak.nl)
