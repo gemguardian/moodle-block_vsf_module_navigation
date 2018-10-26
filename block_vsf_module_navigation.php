@@ -302,7 +302,8 @@ class block_vsf_module_navigation extends block_base {
                             $thismod->active = 'active';
                         }
                     }
-
+                    $key = 'cm_' . $module->id;
+                    $thismod->time = isset($this->config->$key) ? $this->config->$key : 0;
                     $thismod->name = format_string($module->name, true, ['context' => $context]);
                     $thismod->url = $module->url;
                     if ($module->modname == 'label') {

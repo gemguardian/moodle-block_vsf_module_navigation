@@ -59,3 +59,4 @@ $string['config_display_secionname_label'] = 'If enabled the section name will b
 $string['config_display_secionname'] = 'Display section name';
 $string['config_heading'] = 'The heading name.';
 $string['config_heading_help'] = 'The heading name of the block, if empty course name will be displayed.';
+$string['config_time'] = 'Activity time indication in minutes';

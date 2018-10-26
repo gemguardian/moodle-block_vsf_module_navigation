@@ -31,9 +31,10 @@ class block_vsf_module_navigation_edit_form extends block_edit_form {
     /**
      * Defines fields to add to the settings form
      *
-     * @param moodle_form $mform
+     * @param \MoodleQuickForm $mform
      *
      * @throws coding_exception
+     * @throws moodle_exception
      */
     protected function specific_definition($mform) {
 
@@ -62,6 +63,49 @@ class block_vsf_module_navigation_edit_form extends block_edit_form {
         $mform->setDefault('config_heading', '');
         $mform->setType('config_heading', PARAM_TEXT);
 
+        $this->get_activities($mform);
+
         $mform->addHelpButton('config_heading', 'config_heading', 'block_vsf_module_navigation');
     }
+
+    /**
+     * get_activities
+     *
+     *
+     * @param \MoodleQuickForm $mform
+     *
+     * @throws coding_exception
+     * @throws moodle_exception
+     */
+    protected function get_activities($mform) {
+
+        global $COURSE;
+        $mform->addElement('header', 'configheader_time', get_string('config_time', 'block_vsf_module_navigation'));
+
+        $modinfo = get_fast_modinfo($COURSE->id, -1);
+        foreach ($modinfo->instances as $module => $instances) {
+//            $modulename = get_string('pluginname', $module);
+            foreach ($instances as $index => $cm) {
+//                $activities[] = [
+//                    'type' => $module,
+//                    'modulename' => $modulename,
+//                    'id' => $cm->id,
+//                    'instance' => $cm->instance,
+//                    'name' => $cm->name,
+//                    'expected' => $cm->completionexpected,
+//                    'section' => $cm->sectionnum,
+//                    'position' => array_search($cm->id, $sections[$cm->sectionnum]),
+//                    'url' => method_exists($cm->url, 'out') ? $cm->url->out() : '',
+//                    'context' => $cm->context,
+//                    'icon' => $cm->get_icon_url(),
+//                    'available' => $cm->available,
+//                ];
+
+                $mform->addElement('text', 'config_cm_' . $cm->id, $cm->name);
+                $mform->setDefault('config_cm_' . $cm->id, 0);
+                $mform->setType('config_cm_' . $cm->id, PARAM_INT);
+            }
+        }
+    }
+
 }

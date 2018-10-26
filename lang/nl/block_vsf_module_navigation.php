@@ -54,3 +54,4 @@ $string['completionchecklocation'] = 'Waar wil je de icoon voor voltooiingsvoorw
 $string['completionchecklocation_desc'] = 'Toon checks voor of achter de activiteitsnaam';
 $string['left'] = 'Links';
 $string['right'] = 'Rechts';
+$string['config_time'] = 'Activiteit tijdsindicatie in minuten';

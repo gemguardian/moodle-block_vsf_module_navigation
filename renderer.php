@@ -31,4 +31,6 @@ class block_vsf_module_navigation_nav_renderer extends plugin_renderer_base {
             return $this->render_from_template('block_vsf_module_navigation/coursenav', $template);
         }
     }
+
+
 }
