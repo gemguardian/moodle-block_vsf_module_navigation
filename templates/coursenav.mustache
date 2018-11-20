@@ -29,80 +29,84 @@
     * modudules Array of course modules
 }}
 <div class="section-group" id="accordion" role="tablist" aria-multiselectable="true">
-  {{#sections}}
-  <div class="section section-default">
-    <div class="module-navigation-section-heading" role="tab" id="heading{{number}}">
-      <div class="section-title">
-        <ul class="allpagination">
-            <li class="allsectionnames">
-                {{#collapse}}
-                  <a href="{{{url}}}">
-                {{/collapse}}
-                {{^collapse}}
-                  {{#onlytitles}}
-                    <a href="{{{url}}}">
-                  {{/onlytitles}}
-                  {{^onlytitles}}
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{number}}" aria-expanded="true" aria-controls="collapse{{number}}">
-                  {{/onlytitles}}
-                {{/collapse}}
-                {{title}}
-                </a>
-            </li>
-            {{#collapse}}
-            <li class="arrowaccordion">
-                {{#hasmodules}}
-                  <a class="expand-arrow" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{number}}" aria-expanded="true" aria-controls="collapse{{number}}">
-                  </a>
-                {{/hasmodules}}
-            </li>
-            {{/collapse}}
-        </ul>
-      </div>
-    </div>
-    <div id="collapse{{number}}" class="section-collapse collapse {{#selected}}in{{/selected}}" role="tabsection" aria-labelledby="heading{{number}}">
-      <div class="section-body">
-       <ul class="activities">
-        {{#modules}}
-          {{^onlytitles}}
-            <li>
-              <a href="{{{url}}}" class="{{active}} {{#label}}modulenavigationlabel{{/label}} {{#checkboxleft}}checkboxleft{{/checkboxleft}} {{#checkboxright}}checkboxright{{/checkboxright}}">
-                {{#completionon}}
-                    {{#checkboxleft}}
-                    <div class="completionbox">
-                        {{#circlechecks}}
-                        <div class="completioncheck checkicon {{completeclass}}">
-                        </div>
-                        {{/circlechecks}}
-                        {{#checkchecks}}
-                        <i class="fa fa-check checkicon {{completeclass}}"></i>
-                        {{/checkchecks}}
-                    </div>
-                    {{/checkboxleft}}
-                {{/completionon}}
-                <div class="activityname">
-                    {{{name}}}
+    {{#sections}}
+        <div class="section section-default">
+            <div class="module-navigation-section-heading" role="tab" id="heading{{number}}">
+                <div class="section-title">
+                    <ul class="allpagination">
+                        <li class="allsectionnames">
+                            {{#collapse}}
+                            <a href="{{{url}}}">
+                            {{/collapse}}
+                            {{^collapse}}
+                                {{#onlytitles}}
+                                <a href="{{{url}}}">
+                                {{/onlytitles}}
+                                {{^onlytitles}}
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{number}}" aria-expanded="true"
+                                   aria-controls="collapse{{number}}">
+                                {{/onlytitles}}
+                            {{/collapse}}
+                            {{title}}
+                        </a>
+                        </li>
+                        {{#collapse}}
+                            <li class="arrowaccordion">
+                                {{#hasmodules}}
+                                    <a class="expand-arrow" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{number}}"
+                                       aria-expanded="true" aria-controls="collapse{{number}}">
+                                    </a>
+                                {{/hasmodules}}
+                            </li>
+                        {{/collapse}}
+                    </ul>
                 </div>
-                {{#completionon}}
-                    {{#checkboxright}}
-                    <div class="completionbox">
-                        {{#circlechecks}}
-                        <div class="completioncheck {{completeclass}}">
-                        </div>
-                        {{/circlechecks}}
-                        {{#checkchecks}}
-                        <i class="fa fa-check checkicon {{completeclass}}"></i>
-                        {{/checkchecks}}
-                    </div>
-                    {{/checkboxright}}
-                {{/completionon}}
-              </a>
-            </li>
-          {{/onlytitles}}
-        {{/modules}}
-        </ul>
-      </div>
-    </div>
-  </div>
-  {{/sections}}
+            </div>
+            <div id="collapse{{number}}" class="section-collapse collapse {{#selected}}in{{/selected}}" role="tabsection"
+                 aria-labelledby="heading{{number}}">
+                <div class="section-body">
+                    <ul class="activities">
+                        {{#modules}}
+                            {{^onlytitles}}
+                                <li>
+                                    <a href="{{{url}}}" class="{{active}} {{#label}}modulenavigationlabel{{/label}} {{#checkboxleft}}checkboxleft{{/checkboxleft}}
+                                        {{#checkboxright}}checkboxright{{/checkboxright}}">
+                                        {{#completionon}}
+                                            {{#checkboxleft}}
+                                                <div class="completionbox">
+                                                    {{#circlechecks}}
+                                                        <div class="completioncheck checkicon {{completeclass}}">
+                                                        </div>
+                                                    {{/circlechecks}}
+                                                    {{#checkchecks}}
+                                                        <i class="fa fa-check checkicon {{completeclass}}"></i>
+                                                    {{/checkchecks}}
+                                                </div>
+                                            {{/checkboxleft}}
+                                        {{/completionon}}
+                                        <div class="activityname">
+                                            {{{name}}}
+                                        </div>
+                                        {{#completionon}}
+                                            {{#checkboxright}}
+                                                <div class="completionbox">
+                                                    {{#circlechecks}}
+                                                        <div class="completioncheck {{completeclass}}">
+                                                        </div>
+                                                    {{/circlechecks}}
+                                                    {{#checkchecks}}
+                                                        <i class="fa fa-check checkicon {{completeclass}}"></i>
+                                                    {{/checkchecks}}
+                                                </div>
+                                            {{/checkboxright}}
+                                        {{/completionon}}
+                                    </a>
+                                </li>
+                            {{/onlytitles}}
+                        {{/modules}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {{/sections}}
 </div>

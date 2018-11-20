@@ -43,33 +43,33 @@
     {{#sections}}
         {{#selected}}
             <div class="section section-default">
-                <div class="module-navigation-section-heading" role="tab" id="heading{{number}}">
-                    <div class="section-title">
-                        <ul class="pagination">
-                            {{#hasprev}}
-                                <li class="prev {{prevclass}}">
-                                    <a href="{{prevurl}}" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                            {{/hasprev}}
-                            <li class="sectionname">
-                                {{#config.display_secionname}}
+                {{#config.display_secionname}}
+                    <div class="module-navigation-section-heading" role="tab" id="heading{{number}}">
+                        <div class="section-title">
+                            <ul class="pagination">
+                                {{#hasprev}}
+                                    <li class="prev {{prevclass}}">
+                                        <a href="{{prevurl}}" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                {{/hasprev}}
+                                <li class="sectionname">
                                     <a href="{{currurl}}" aria-lable="Current">
                                         {{title}}
                                     </a>
-                                {{/config.display_secionname}}
-                            </li>
-                            {{#hasnext}}
-                                <li class="next {{nextclass}}">
-                                    <a href="{{nexturl}}" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
                                 </li>
-                            {{/hasnext}}
-                        </ul>
+                                {{#hasnext}}
+                                    <li class="next {{nextclass}}">
+                                        <a href="{{nexturl}}" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                {{/hasnext}}
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                {{/config.display_secionname}}
                 <div id="collapse" class="section-collapse" aria-labelledby="heading">
                     <div class="section-body">
                         <ul class="activities list-group">

@@ -29,10 +29,10 @@ if ($ADMIN->fulltree) {
     $title = get_string('toggleclickontitle', 'block_vsf_module_navigation');
     $description = get_string('toggleclickontitle_desc', 'block_vsf_module_navigation');
     $default = 1;
-    $choices = array(
+    $choices = [
         1 => get_string('toggleclickontitle_menu', 'block_vsf_module_navigation'),
         2 => get_string('toggleclickontitle_page', 'block_vsf_module_navigation'),
-    );
+    ];
     $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
     // Option: show labels.
@@ -40,10 +40,10 @@ if ($ADMIN->fulltree) {
     $title = get_string('toggleshowlabels', 'block_vsf_module_navigation');
     $description = get_string('toggleshowlabels_desc', 'block_vsf_module_navigation');
     $default = 1;
-    $choices = array(
+    $choices = [
         1 => new lang_string('no'), // No.
         2 => new lang_string('yes')   // Yes.
-    );
+    ];
     $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
     // Option: Show all tabs open.
@@ -51,10 +51,10 @@ if ($ADMIN->fulltree) {
     $title = get_string('togglecollapse', 'block_vsf_module_navigation');
     $description = get_string('togglecollapse_desc', 'block_vsf_module_navigation');
     $default = 1;
-    $choices = array(
+    $choices = [
         1 => new lang_string('no'), // No.
         2 => new lang_string('yes')   // Yes.
-    );
+    ];
     $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
     // Option: Show only titles.
@@ -62,10 +62,10 @@ if ($ADMIN->fulltree) {
     $title = get_string('toggletitles', 'block_vsf_module_navigation');
     $description = get_string('toggletitles_desc', 'block_vsf_module_navigation');
     $default = 1;
-    $choices = array(
+    $choices = [
         1 => new lang_string('no'), // No.
         2 => new lang_string('yes')   // Yes.
-    );
+    ];
     $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
     // Option: Show on activity pages only.
@@ -73,10 +73,10 @@ if ($ADMIN->fulltree) {
     $title = get_string('modulepageonly', 'block_vsf_module_navigation');
     $description = get_string('modulepageonly_desc', 'block_vsf_module_navigation');
     $default = 1;
-    $choices = array(
+    $choices = [
         1 => new lang_string('no'), // No.
         2 => new lang_string('yes')   // Yes.
-    );
+    ];
     $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
     // Option: Show on activity pages only.
@@ -84,10 +84,10 @@ if ($ADMIN->fulltree) {
     $title = get_string('onesectionsimplified', 'block_vsf_module_navigation');
     $description = get_string('onesectionsimplified_desc', 'block_vsf_module_navigation');
     $default = 1;
-    $choices = array(
+    $choices = [
         1 => new lang_string('no'), // No.
         2 => new lang_string('yes')   // Yes.
-    );
+    ];
     $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
     // Option: Type of check icon for activity completion.
@@ -95,10 +95,10 @@ if ($ADMIN->fulltree) {
     $title = get_string('completionchecktype', 'block_vsf_module_navigation');
     $description = get_string('completionchecktype_desc', 'block_vsf_module_navigation');
     $default = 1;
-    $choices = array(
+    $choices = [
         1 => get_string('circle', 'block_vsf_module_navigation'),
-        2 => get_string('check', 'block_vsf_module_navigation')
-    );
+        2 => get_string('check', 'block_vsf_module_navigation'),
+    ];
     $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
     // Option: Location of completion check.
@@ -106,9 +106,9 @@ if ($ADMIN->fulltree) {
     $title = get_string('completionchecklocation', 'block_vsf_module_navigation');
     $description = get_string('completionchecklocation_desc', 'block_vsf_module_navigation');
     $default = 1;
-    $choices = array(
+    $choices = [
         1 => get_string('left', 'block_vsf_module_navigation'),
-        2 => get_string('right', 'block_vsf_module_navigation')
-    );
-    $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices)); 
+        2 => get_string('right', 'block_vsf_module_navigation'),
+    ];
+    $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 }
