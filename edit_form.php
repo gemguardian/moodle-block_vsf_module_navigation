@@ -83,23 +83,18 @@ class block_vsf_module_navigation_edit_form extends block_edit_form {
         $mform->addElement('header', 'configheader_time', get_string('config_time', 'block_vsf_module_navigation'));
 
         $modinfo = get_fast_modinfo($COURSE->id, -1);
+
+        $sectionstrack = [];
         foreach ($modinfo->instances as $module => $instances) {
-//            $modulename = get_string('pluginname', $module);
+
+
             foreach ($instances as $index => $cm) {
-//                $activities[] = [
-//                    'type' => $module,
-//                    'modulename' => $modulename,
-//                    'id' => $cm->id,
-//                    'instance' => $cm->instance,
-//                    'name' => $cm->name,
-//                    'expected' => $cm->completionexpected,
-//                    'section' => $cm->sectionnum,
-//                    'position' => array_search($cm->id, $sections[$cm->sectionnum]),
-//                    'url' => method_exists($cm->url, 'out') ? $cm->url->out() : '',
-//                    'context' => $cm->context,
-//                    'icon' => $cm->get_icon_url(),
-//                    'available' => $cm->available,
-//                ];
+
+                if (!isset($sectionstrack[$cm->sectionnum])) {
+                    $mform->addElement('static', 'header-' . $cm->sectionnum, html_writer::tag('b', get_section_name($COURSE,
+                        $cm->sectionnum)));
+                    $sectionstrack[$cm->sectionnum] = true;
+                }
 
                 $mform->addElement('text', 'config_cm_' . $cm->id, $cm->name);
                 $mform->setDefault('config_cm_' . $cm->id, 0);
