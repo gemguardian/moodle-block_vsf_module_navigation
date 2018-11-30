@@ -79,4 +79,4 @@ Us
 
 @author Nick Papoutsis(http://nils.gr/)
 
-@author Luuk Verhoeven (https://moodlefreak.nl)
+@author Luuk Verhoeven (https://mfreak.nl)
