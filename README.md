@@ -10,27 +10,27 @@ If you want to display course module navigation on all pages of the course (main
 
 ## We add some options. Now you can
 
-**Section Names**
-- Option A : Clicking at section name will point to section area or section page (for example if you use a course format as one section by page).
-- Option B : Clicking at section name will display the list of resources and activities
+**Block Settings**
+- Section name: decided if you want to show the name of the section.
+- Course name: if you do not want the block to show the course name in the heading you can change it.
+- Time for each activity: fill in the time that is needed to complete and/or read the module. 
+- Change the setting to: On each page to show the block on the EACH module pages
 
-**Labels**
-You can choose if labels are displayed or not in the menu with the option "toggleshowlabels".
+**Site administration settings**
+- Show this block only on module pages: set this block only to show on the module pages
+- Choice you own type of completion icon: Circle or Mark
+- Choice where to show the completion icon: left or right of the module name
 
-**Expand/open menu**
-You can chose if menu is always open with the option "togglecollapse"
+**UPCOMING**
+- Stealth mode: choice if the Navigation block should show or ignore stealth mode modules
+- Accordion modus for modules that are jumped in at least 1 to the right. 
 
 ## About activity completion
-If activity completion is used in the course, course navigation block display a circle empty or green to show state of completion. 
-
-## Display Type of the menu
-This block has an option to display at choice :
-- Only the active section
-- or all the sections 
+If activity completion is used in the course, course navigation block display a circle or mark empty or green to show state of completion. 
 
 Maintainer
 ============
-Course module navigation was initialy developed by Bas Brand and was based on an request of Digidago (Clément PRUDHOMME). It is currently maintained by DigiDago.
+Course module navigation was initialy developed by Bas Brand and was based on an request of Digidago (Clément PRUDHOMME). It is currently maintained by Lesterhuis Training & Consultancy. 
 
 
 Required version of Moodle
@@ -65,7 +65,7 @@ See Changes.md.
 
 Languages and translation
 ===================
-English and french versions included / versions anglaise et française incluses.
+English, Dutch and french versions included.
 
 Customization
 ===================
