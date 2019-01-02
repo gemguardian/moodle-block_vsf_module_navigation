@@ -57,16 +57,16 @@ module.exports = function(grunt) {
                 dest: 'styles.css'
             }
         },
-        exec: {
-            decache: {
-               // cmd: 'php -r "' + decachephp + '"',
-                callback: function(error) {
-                    if (!error) {
-                        grunt.log.writeln("Moodle theme cache reset.");
-                    }
-                }
-            }
-        },
+        // exec: {
+        //     decache: {
+        //        // cmd: 'php -r "' + decachephp + '"',
+        //         callback: function(error) {
+        //             if (!error) {
+        //                 grunt.log.writeln("Moodle theme cache reset.");
+        //             }
+        //         }
+        //     }
+        // },
         watch: {
             // Watch for any changes to less files and compile.
             files: ["less/*.less"],
@@ -102,5 +102,5 @@ module.exports = function(grunt) {
     // Register tasks.
     grunt.registerTask("default", ["watch"]);
   //  grunt.registerTask("decache", ["exec:decache"]);
-    grunt.registerTask("compile", ["less", "decache"]);
+    grunt.registerTask("compile", ["less"]);
 };
