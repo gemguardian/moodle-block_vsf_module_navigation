@@ -148,6 +148,8 @@ class block_vsf_module_navigation extends block_base {
             return $this->content;
         }
 
+        $hidestealth = get_config('block_vsf_module_navigation' , 'display_stealth');
+
         $context = context_course::instance($course->id);
 
         $modinfo = get_fast_modinfo($course);
@@ -294,6 +296,11 @@ class block_vsf_module_navigation extends block_base {
                     if (!$module->uservisible) {
                         continue;
                     }
+
+                    if (empty($module->visible) && $hidestealth) {
+                        continue;
+                    }
+
                     $thismod = new stdClass();
 
                     if ($inactivity) {
