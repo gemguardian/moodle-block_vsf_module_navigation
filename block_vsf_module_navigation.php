@@ -148,7 +148,8 @@ class block_vsf_module_navigation extends block_base {
             return $this->content;
         }
 
-        $hidestealth = get_config('block_vsf_module_navigation' , 'display_stealth');
+        $PAGE->requires->js_call_amd('block_vsf_module_navigation/coursenav', 'init');
+        $hidestealth = get_config('block_vsf_module_navigation', 'display_stealth');
 
         $context = context_course::instance($course->id);
 
@@ -273,12 +274,12 @@ class block_vsf_module_navigation extends block_base {
                 $thissection->selected = true;
             }
 
-            // Show only titles
+            // Show only titles.
             if (get_config('block_vsf_module_navigation', 'toggletitles') == 2) {
-                // Show only titles
+                // Show only titles.
                 $thissection->onlytitles = true;
             } else {
-                // Show  titles and contents
+                // Show  titles and contents.
                 $thissection->onlytitles = false;
             }
 
@@ -313,6 +314,9 @@ class block_vsf_module_navigation extends block_base {
                     $thismod->time = isset($this->config->$key) ? $this->config->$key : 0;
                     $thismod->name = format_string($module->name, true, ['context' => $context]);
                     $thismod->url = $module->url;
+                    $thismod->depth = $module->indent;
+                    $thismod->is_child = $module->indent > 0;
+
                     if ($module->modname == 'label') {
                         $thismod->url = '';
                         $thismod->label = 'true';
@@ -328,6 +332,8 @@ class block_vsf_module_navigation extends block_base {
                     }
                     $thissection->modules[] = $thismod;
                 }
+
+                $thissection->modules = array_map([$this, 'activity_parent_marker'], $thissection->modules);
                 $thissection->hasmodules = (count($thissection->modules) > 0);
                 $template->sections[] = $thissection;
             }
@@ -369,6 +375,25 @@ class block_vsf_module_navigation extends block_base {
         $this->content->text = $renderer->render_nav($template);
 
         return $this->content;
+    }
+
+    /**
+     * @param $activity
+     *
+     * @return mixed
+     */
+    public function activity_parent_marker($activity) {
+        static $previousactivity;
+
+        if (!empty($previousactivity) &&
+            $previousactivity->depth == 0 &&
+            $activity->depth > 0) {
+            $previousactivity->is_parent = true;
+        }
+
+        $previousactivity = $activity;
+
+        return $activity;
     }
 
     /**

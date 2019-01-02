@@ -1,6 +1,7 @@
 @section-bg: #fff;
 @section-body-padding: 0;
-@section-heading-padding: 10px 15px;
+@section-heading-padding: 10px 15px 10px 15px;
+@section-child-padding: 10px 15px 10px 40px;
 @section-footer-padding: @section-heading-padding;
 @section-border-radius: 0;
 
@@ -44,27 +45,34 @@
     margin: 0;
     padding: 0;
     width: 100%;
+
     .prev,
     .next {
       width: 10%;
+
       a {
         background-color: inherit;
 
       }
     }
+
     .sectionname,
     .allsectionames {
       width: 90%;
       border-radius: 0;
       border: 0;
     }
+
     .expand-arrow {
       width: 18px;
       float: right;
     }
+
     display: table;
+
     & > li {
       display: table-cell;
+
       a {
         padding: @section-heading-padding;
         float: none;
@@ -81,75 +89,104 @@
     margin: 0;
     padding: 0;
     list-style: none;
+
     li > a {
       padding: 0;
       border-bottom: 1px solid #eee;
       display: block;
+
       &.checkboxright {
         display: table;
         width: 100%;
       }
+
       &:hover,
       &.active {
         text-decoration: none;
         background-color: #eee;
       }
     }
-    .completionbox {
-      padding: @section-heading-padding;
-      position: relative;
-      display: table-cell;
-      width: 18px;
-    }
-    .activityname {
-      padding: @section-heading-padding;
-      display: table-cell;
-    }
-    .checkboxright .activityname {
-      margin-left: 10px;
-    }
 
-    .checkboxleft .completioncheck {
-      position: absolute;
-      top: 50%;
-      margin-top: -5px;
-    }
-    .checkboxright .completionbox {
-      width: 20%;
-      text-align: right;
-    }
+    li {
+      // Child menu item.
+      &.child {
+        display: none;
 
-    .completioncheck {
-      content: '';
-      width: 10px;
-      height: 10px;
+        .activityname {
+          padding: @section-child-padding;
+          display: table-cell;
+        }
+      }
 
-      border-radius: 5px;
-      display: inline-block;
-      &.incomplete {
-        border: 1px solid #ccc;
+      .fa-arrow-right, .fa-arrow-down {
+        cursor: pointer;
       }
-      &.completed {
-        border: 1px solid #5cb85c;
-        background-color: #5cb85c;
+
+      .completionbox {
+        padding: @section-heading-padding;
+        position: relative;
+        display: table-cell;
+        width: 18px;
       }
-    }
-    .checkicon {
-      display: none;
-      &.incomplete {
-        display: block;
-        color: #e8e8e8;
+
+      .activityname {
+        padding: @section-heading-padding;
+        display: table-cell;
       }
-      &.completed {
-        display: block;
-        color: #5cb85c;
+
+      .checkboxright .activityname {
+        margin-left: 10px;
       }
-    }
-    .modulenavigationlabel {
-      pointer-events: none;
-      cursor: default;
-      color: black;
-      font-weight: 700;
+
+      .checkboxleft .completioncheck {
+        position: absolute;
+        top: 50%;
+        margin-top: -5px;
+      }
+
+      .checkboxright .completionbox {
+        width: 20%;
+        text-align: right;
+      }
+
+      .completioncheck {
+        content: '';
+        width: 10px;
+        height: 10px;
+
+        border-radius: 5px;
+        display: inline-block;
+
+        &.incomplete {
+          border: 1px solid #ccc;
+        }
+
+        &.completed {
+          border: 1px solid #5cb85c;
+          background-color: #5cb85c;
+        }
+      }
+
+      .checkicon {
+        display: none;
+
+        &.incomplete {
+          display: block;
+          color: #e8e8e8;
+        }
+
+        &.completed {
+          display: block;
+          color: #5cb85c;
+        }
+      }
+
+      .modulenavigationlabel {
+        pointer-events: none;
+        cursor: default;
+        color: black;
+        font-weight: 700;
+      }
     }
   }
 
@@ -177,6 +214,7 @@
       color: inherit;
     }
   }
+
   .tocourse {
     display: block;
     padding: @section-heading-padding;
@@ -188,6 +226,7 @@
       text-decoration: none;
     }
   }
+
   .onesection .module-navigation-section-heading {
     padding: 0;
   }
@@ -246,18 +285,21 @@
         }
       }
     }
+
     > .module-navigation-section-heading + .section-collapse > .list-group {
       .list-group-item:first-child {
         .border-top-radius(0);
       }
     }
   }
+
   // Collapse space between when there's no additional content.
   .module-navigation-section-heading + .list-group {
     .list-group-item:first-child {
       border-top-width: 0;
     }
   }
+
   .list-group + .section-footer {
     border-top-width: 0;
   }
@@ -265,7 +307,7 @@
   // Collapsable sections (aka, accordion)
   //
   // Wrap a series of sections in `.section-group` to turn them into an accordion with
-  // the help of our collapse JavaScript plugin.
+  // the help of our collapse_active JavaScript plugin.
 
   .section-group {
     margin-bottom: 20px;
@@ -291,6 +333,7 @@
 
     .section-footer {
       border-top: 0;
+
       + .section-collapse .section-body {
         border-bottom: 1px solid @section-inner-border;
       }
@@ -308,6 +351,7 @@
       + .section-collapse > .section-body {
         border-top-color: @border;
       }
+
       .badge {
         color: @heading-bg-color;
         background-color: @heading-text-color;

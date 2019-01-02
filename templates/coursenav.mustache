@@ -68,7 +68,7 @@
                     <ul class="activities">
                         {{#modules}}
                             {{^onlytitles}}
-                                <li>
+                                <li class="depth-{{depth}} {{#is_parent}}parent{{/is_parent}} {{#is_child}}child{{/is_child}}">
                                     <a href="{{{url}}}" class="{{active}} {{#label}}modulenavigationlabel{{/label}} {{#checkboxleft}}checkboxleft{{/checkboxleft}}
                                         {{#checkboxright}}checkboxright{{/checkboxright}}">
                                         {{#completionon}}
@@ -85,7 +85,10 @@
                                             {{/checkboxleft}}
                                         {{/completionon}}
                                         <div class="activityname">
-                                            {{{name}}}
+                                            {{#is_parent}}
+                                                <i class="fas fa fa-arrow-right"></i>
+                                            {{/is_parent}}
+                                            <span>{{{name}}}</span>
                                         </div>
                                         {{#completionon}}
                                             {{#checkboxright}}

@@ -74,7 +74,7 @@
                     <div class="section-body">
                         <ul class="activities list-group">
                             {{#modules}}
-                                <li>
+                                <li class="depth-{{depth}} {{#is_parent}}parent{{/is_parent}} {{#is_child}}child{{/is_child}}">
                                     <a href="{{{url}}}" class="{{active}} {{#checkboxleft}}checkboxleft{{/checkboxleft}} {{#checkboxright}}checkboxright{{/checkboxright}}">
                                         {{#completionon}}
                                             {{#checkboxleft}}
@@ -90,7 +90,10 @@
                                             {{/checkboxleft}}
                                         {{/completionon}}
                                         <div class="activityname">
-                                            {{{name}}}
+                                            {{#is_parent}}
+                                                <i class="fas fa fa-arrow-right"></i>
+                                            {{/is_parent}}
+                                            <span>{{{name}}}</span>
                                             {{#time}}
                                                 ({{time}} min <i class="fa fa-clock-o" aria-hidden="true"></i>)
                                             {{/time}}
